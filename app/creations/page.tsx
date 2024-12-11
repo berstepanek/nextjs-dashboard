@@ -8,18 +8,16 @@ async function getCreations() {
     return posts;
 }
 
-const BlogPage = async () => {
+const CreationsPage = async () => {
     const creations = await getCreations();
     return (
         <div className="blog-page">
-            <h2>All Blog Posts</h2>
-            <p>All blog posts are fetched from WordPress via the WP REST API.</p>
+            <h2>All Creations</h2>
             <div className="posts">
                 {creations.map((creation : any) => {
                     return (
                         <Link href={`/creations/${creation.id}`} className="post" key={creation.id}>
                             <h3>{creation.acf.creation_title}</h3>
-                            
                         </Link>
                     );
                 })}
@@ -28,4 +26,4 @@ const BlogPage = async () => {
     );
 };
 
-export default BlogPage;
+export default CreationsPage;
